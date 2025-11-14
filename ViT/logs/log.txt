@@ -1,0 +1,9 @@
+Model loaded at epoch: 21  at loss:  0.013684005121573278
+
+Test set: Average loss: 0.0137, Accuracy: 3352/3361 (99.73%)
+
+Test Loss: 0.0137
+Accuracy: 99.73%
+Precision: 1.00
+Recall: 1.00
+F1 Score: 1.00
