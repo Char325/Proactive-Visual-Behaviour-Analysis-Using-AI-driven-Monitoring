@@ -1,4 +1,4 @@
-# 😴 Proactive Visual Behaviour Analysis Using AI-driven Monitoring: A Real-Time Driver Drowsiness Detection System
+# 😴 Proactive Visual Behaviour Analysis Using AI-driven Monitoring AKA FastViT-DrowsyNet: A Real-Time Driver Drowsiness Detection System
 
 ## 🌟 Overview
 
