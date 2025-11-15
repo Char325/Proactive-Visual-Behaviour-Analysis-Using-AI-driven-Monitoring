@@ -12,6 +12,22 @@ The complete solution is an **integrated and end-to-end ecosystem** that combine
 This approach addresses the silent but dangerous threat of driver fatigue on the road by providing a portable, scalable, and accurate solution.
 
 ---
+## ✨ Motivation
+### Safety Concern: 
+Road safety remains a major global concern, with driver drowsiness contributing to a significant number of traffic accidents every year. Drowsy driving is a leading cause of fatal crashes, especially during long highway journeys, nighttime driving, or monotonous routes.
+
+### The Silent Threat: 
+Unlike drunk or distracted driving, fatigue often goes unnoticed until it is too late, making it a silent but dangerous threat on the road.
+
+### Limitations of Current Systems: 
+Most existing solutions—such as steering wheel movement sensors or lane deviation trackers—either require specialized hardware or are only effective in specific scenarios. Additionally, many commercial driver monitoring systems are expensive and inaccessible to everyday users or small-scale transport operators.
+
+
+## 🛠️ Built With
+<img src='https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white' />
+<img src='https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white' />
+<img src='https://img.shields.io/badge/Kotlin-B125EA?style=for-the-badge&logo=kotlin&logoColor=white' />
+<img src='https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white' />
 
 ## 💡 Core Concept
 
