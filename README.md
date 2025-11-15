@@ -65,14 +65,14 @@ applied to each image
   <img src="https://github.com/user-attachments/assets/4168b210-032a-4709-802d-9d53897bd6d8" width="227" height="227" />
   <img src="https://github.com/user-attachments/assets/96add75c-59ad-498a-b7ef-aa46b87988f9" width="227" height="227" />
 </p>
-Characteristics often include partially closed eyes, drooping eyelids, or head tilting.
+Characteristics often include partially closed eyes, drooping eyelids, or head tilting marking high MAR & low EAR values.
 
 * 🌞 Non-Drowsy
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f3a0e2f7-3521-4e04-a45a-6a7adea51190" width="227" height="227" />
   <img src="https://github.com/user-attachments/assets/0d558886-5e87-4f15-b14f-99080c4ba023" width="227" height="227" />
 </p>
-Characteristics often include wide-open eyes, upright head posture, and focused gaze.
+Characteristics often include wide-open eyes, upright head posture, and focused gaze marking high EAR & low MAR values.
 
 ## 🛠️ Methodology & Deployment
 
