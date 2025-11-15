@@ -121,7 +121,7 @@ The mobile app, built using Kotlin DSL, provides several critical features:
 * Displaying the driver's real-time location using a map interface.
 * Notifying an emergency contact in case of severe or repeated drowsiness detection.
 * Presenting visual trends and logs of past drowsiness events.
-<img width="399" height="816" alt="image" src="https://github.com/user-attachments/assets/e36a0d14-9544-4749-b2c5-1e2eb8b721e0" />
+<img width="299" height="616" alt="image" src="https://github.com/user-attachments/assets/e36a0d14-9544-4749-b2c5-1e2eb8b721e0" />
 
 
 ### 3. Fleet Management
@@ -129,7 +129,7 @@ This component enables remote monitoring of vehicles and drivers:
 * **GPS Data Acquisition:** Fetches GPS coordinates.
 * **Data Publishing:** Uses MQTT to publish data (status and location) to the cloud (e.g., ThingSpeak).
 * **Cloud Dashboard:** Data is visualized on a cloud dashboard, allowing a fleet manager to monitor vehicles.
-<img width="1936" height="757" alt="image" src="https://github.com/user-attachments/assets/84e84d34-744d-42f0-8aa2-689bc57e7ce5" />
+<img width="1736" height="657" alt="image" src="https://github.com/user-attachments/assets/84e84d34-744d-42f0-8aa2-689bc57e7ce5" />
 
 
 ---
