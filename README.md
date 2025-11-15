@@ -21,7 +21,7 @@ Unlike drunk or distracted driving, fatigue often goes unnoticed until it is too
 
 * **Limitations of Current Systems:** 
 Most existing solutions—such as steering wheel movement sensors or lane deviation trackers—either require specialized hardware or are only effective in specific scenarios. Additionally, many commercial driver monitoring systems are expensive and inaccessible to everyday users or small-scale transport operators.
-
+---
 
 ## 🛠️ Built With
 * <img src='https://img.shields.io/badge/Raspberry%20Pi-A22846?style=for-the-badge&logo=Raspberry%20Pi&logoColor=white' />
@@ -50,6 +50,15 @@ The system proactively monitors signs of fatigue using a deep learning-based Vis
 
 ---
 
+## 👁️👁️ Dataset & Preprocessing Steps
+The Kaggle Driver Drowsiness Dataset (DDD) serves as the foundational data source for
+training and evaluating our drowsiness detection model. This dataset is specifically curated
+with labeled images of drivers’ ears, where each image is associated with a correspond-
+ing drowsiness level (typically categorized as ’drowsy’ or ’Not Drowsy’). To optimize the
+model’s learning and generalization capabilities, a series of crucial preprocessing steps such as image resizing, pixel value normalization etc. are
+applied to each image
+
+** Some drowsy image examples from the DDD Dataset **
 ## 🛠️ Methodology & Deployment
 
 The implementation is divided into three major interconnected components:
@@ -109,6 +118,107 @@ This component enables remote monitoring of vehicles and drivers:
 
 
 ---
+# ⚙️ FastViT-DrowsyNet: Code Setup & Usage Guide
+
+This guide details the steps required to set up the environment, download the necessary data, and execute the training and prediction scripts for the **FastViT-DrowsyNet** model.
+
+## 📦 Prerequisites
+
+Ensure you have the following software and libraries installed:
+
+1.  **Python 3.x**
+2.  **Required Libraries:** (Install via `pip install -r requirements.txt`)
+    * Torch/Torchvision
+    * OpenCV (`opencv-python`)
+    * dlib (Requires system-level build tools/CMake)
+    * Pandas, NumPy, etc.
+3.  **Jupyter Notebook** (or Jupyter Lab) for running the `.ipynb` files.
+4.  **Kaggle Account** (for downloading the DDD dataset).
+
+---
+
+## 💾 Step 1: Data Setup and Preprocessing
+
+The model uses the **Kaggle Driver Drowsiness Dataset (DDD)**.
+
+### 1.1 Download the Dataset
+
+1.  Obtain the **DDD.zip** file from Kaggle (or upload the file if it's already secured).
+2.  Place the **DDD.zip** file into the root of this project directory.
+3.  Unzip the file. The dataset is expected to contain organized images of driver faces.
+
+### 1.2 Prepare Annotations
+
+The dataset utilizes **CSV files** to map image paths to calculated features like **EAR** (Eye Aspect Ratio).
+
+* `annotations.csv`
+* `train_annotations.csv`
+* `val_annotations.csv`
+* `test_annotations.csv`
+
+The script `dataset.py` is responsible for defining how the model loads data based on these annotation files, linking the image path to its corresponding classification label and EAR value.
+
+---
+
+## 🔬 Step 2: Feature Calculation Scripts
+
+The model relies on geometric features (EAR and MAR) calculated from facial landmarks.
+
+### 2.1 Install dlib Dependencies
+
+Ensure you have the necessary dlib dependency for facial landmark detection:
+* `shape_predictor_68_face_landmarks.dat`: This file must be present in the root directory to run the landmark detection routines.
+
+### 2.2 Calculate EAR and MAR
+
+The core logic for calculating the geometric features is likely housed in `ddd.py`.
+
+* **`ddd.py`:** This script calculates the **Eye Aspect Ratio (EAR)** and **Mouth Aspect Ratio (MAR)** from the detected facial landmarks. These values are often pre-calculated and stored in the CSV files.
+
+---
+
+## 🤖 Step 3: Model Training and Deployment
+
+### 3.1 Training the Model
+
+1.  **Model Definition:** The `fastvit.ipynb` notebook likely contains the initial model setup and potentially some training/fine-tuning steps. The base model weights (`fastvit_t8.pth.tar`) are likely used for transfer learning.
+2.  **Training Script:** Execute the main training script.
+    ```bash
+    python train_fastvit.py
+    ```
+    * This script reads data paths and EAR values from the CSV files (`train_annotations.csv`, `val_annotations.csv`) via `dataset.py`.
+    * It fine-tunes the **FastViT** model (referred to as **FastViT-DrowsyNet** in the report) on the DDD.
+    * The best performing model weights will be saved as **`best_loss.pth`**.
+
+### 3.2 Prediction and Real-Time Use
+
+1.  **Prediction Script:** Use `predict.py` to test the trained model on test data or use it for inference.
+    ```bash
+    python predict.py
+    ```
+2.  **Real-Time Deployment:** The file structure suggests that the `dds.py` script is the final **Driver Drowsiness System** (DDS) script. This is likely the real-time script deployed on the Raspberry Pi:
+    * It loads the saved weights (`best_loss.pth`).
+    * It uses **OpenCV** to capture live video.
+    * It uses **dlib** for real-time facial landmark detection.
+    * It calculates the EAR/MAR.
+    * It feeds the features into the loaded **FastViT-DrowsyNet** model for classification.
+
+---
+
+## 📁 Repository File Manifest
+
+| File/Folder | Purpose | Core Component |
+| :--- | :--- | :--- |
+| `DDD.zip` | The primary dataset archive (Kaggle Driver Drowsiness Dataset). | Data |
+| `fastvit_t8.pth.tar` | Pre-trained weights for the base FastViT model (used for transfer learning). | Model |
+| `best_loss.pth` | The final trained model weights after fine-tuning. | Model |
+| `train_fastvit.py` | Main script for training and validation. | Training |
+| `dataset.py` | Defines the PyTorch Dataset class, handling image loading and annotation parsing. | Data Loader |
+| `train_annotations.csv`, `val_annotations.csv`, etc. | Annotation files mapping images to labels/EAR values. | Data |
+| `ddd.py` | Utility script, likely containing the logic for EAR/MAR calculation. | Feature Engineering |
+| `shape_predictor_68_face_landmarks.dat` | Necessary dlib file for detecting 68 facial landmarks. | dlib Dependency |
+| `predict.py` | Script for testing inference on new images or videos. | Inference |
+| `dds.py` | Final real-time driver drowsiness system script (likely for RPi deployment). | Deployment |
 
 ## 📋 Key Technologies and Abbreviations
 
