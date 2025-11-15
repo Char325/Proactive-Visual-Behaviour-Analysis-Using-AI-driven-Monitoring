@@ -58,13 +58,19 @@ ing drowsiness level (typically categorized as ’drowsy’ or ’Not Drowsy’)
 model’s learning and generalization capabilities, a series of crucial preprocessing steps such as image resizing, pixel value normalization etc. are
 applied to each image
 
-**Some drowsy image examples from the DDD Dataset**
-<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/4168b210-032a-4709-802d-9d53897bd6d8" />
-<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/96add75c-59ad-498a-b7ef-aa46b87988f9" />
+## Drowsy vs Non-Drowsy Examples from the DDD Dataset
 
-**Some non-drowsy image examples from the DDD Dataset**
-<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/f3a0e2f7-3521-4e04-a45a-6a7adea51190" />
-<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/0d558886-5e87-4f15-b14f-99080c4ba023" />
+### 💤 Drowsy
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4168b210-032a-4709-802d-9d53897bd6d8" width="227" height="227" />
+  <img src="https://github.com/user-attachments/assets/96add75c-59ad-498a-b7ef-aa46b87988f9" width="227" height="227" />
+</p>
+
+### 🌞 Non-Drowsy
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f3a0e2f7-3521-4e04-a45a-6a7adea51190" width="227" height="227" />
+  <img src="https://github.com/user-attachments/assets/0d558886-5e87-4f15-b14f-99080c4ba023" width="227" height="227" />
+</p>
 
 
 ## 🛠️ Methodology & Deployment
