@@ -58,20 +58,21 @@ ing drowsiness level (typically categorized as ’drowsy’ or ’Not Drowsy’)
 model’s learning and generalization capabilities, a series of crucial preprocessing steps such as image resizing, pixel value normalization etc. are
 applied to each image
 
-## Drowsy vs Non-Drowsy Examples from the DDD Dataset
+  # Drowsy vs Non-Drowsy Examples from the DDD Dataset
 
-### 💤 Drowsy
+ * 💤 Drowsy
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4168b210-032a-4709-802d-9d53897bd6d8" width="227" height="227" />
   <img src="https://github.com/user-attachments/assets/96add75c-59ad-498a-b7ef-aa46b87988f9" width="227" height="227" />
 </p>
+Characteristics often include partially closed eyes, drooping eyelids, or head tilting.
 
-### 🌞 Non-Drowsy
+* 🌞 Non-Drowsy
 <p align="center">
   <img src="https://github.com/user-attachments/assets/f3a0e2f7-3521-4e04-a45a-6a7adea51190" width="227" height="227" />
   <img src="https://github.com/user-attachments/assets/0d558886-5e87-4f15-b14f-99080c4ba023" width="227" height="227" />
 </p>
-
+Characteristics often include wide-open eyes, upright head posture, and focused gaze.
 
 ## 🛠️ Methodology & Deployment
 
