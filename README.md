@@ -58,7 +58,15 @@ ing drowsiness level (typically categorized as ’drowsy’ or ’Not Drowsy’)
 model’s learning and generalization capabilities, a series of crucial preprocessing steps such as image resizing, pixel value normalization etc. are
 applied to each image
 
-** Some drowsy image examples from the DDD Dataset **
+**Some drowsy image examples from the DDD Dataset**
+<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/4168b210-032a-4709-802d-9d53897bd6d8" />
+<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/96add75c-59ad-498a-b7ef-aa46b87988f9" />
+
+**Some non-drowsy image examples from the DDD Dataset**
+<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/f3a0e2f7-3521-4e04-a45a-6a7adea51190" />
+<img width="227" height="227" alt="image" src="https://github.com/user-attachments/assets/0d558886-5e87-4f15-b14f-99080c4ba023" />
+
+
 ## 🛠️ Methodology & Deployment
 
 The implementation is divided into three major interconnected components:
@@ -74,10 +82,10 @@ The model is built upon the **FastViT** (Fast Hybrid Vision Transformer) archite
 | Feature | Design Rationale | Benefit for Edge Deployment |
 | :--- | :--- | :--- |
 | **Hybrid Structure** | Combines the local feature extraction of Convolutional Neural Networks (CNNs) with the global context modeling of Vision Transformers (ViT). | Higher accuracy than pure CNNs, but much faster than standard ViT models, making it suitable for the Raspberry Pi 4. |
-
 | **Large Kernel Convolutions** | Integrated into the Feed Forward Network (FFN) layers. | Expands the model's effective receptive field to capture large-scale drowsiness cues (like full yawns) without relying on expensive self-attention across the entire image. |
 
 <img width="786" height="1398" alt="image" src="https://github.com/user-attachments/assets/c2347952-9263-4eec-8dd5-2636c93cf772" />
+
 Raspberry with PiCam5 Setup
 
 ### 2. Multi-Modal Feature Fusion
@@ -106,7 +114,7 @@ The mobile app, built using Kotlin DSL, provides several critical features:
 * Displaying the driver's real-time location using a map interface.
 * Notifying an emergency contact in case of severe or repeated drowsiness detection.
 * Presenting visual trends and logs of past drowsiness events.
-  <img width="399" height="816" alt="image" src="https://github.com/user-attachments/assets/e36a0d14-9544-4749-b2c5-1e2eb8b721e0" />
+<img width="399" height="816" alt="image" src="https://github.com/user-attachments/assets/e36a0d14-9544-4749-b2c5-1e2eb8b721e0" />
 
 
 ### 3. Fleet Management
@@ -173,7 +181,7 @@ Ensure you have the necessary dlib dependency for facial landmark detection:
 
 The core logic for calculating the geometric features is likely housed in `ddd.py`.
 
-* **`ddd.py`:** This script calculates the **Eye Aspect Ratio (EAR)** and **Mouth Aspect Ratio (MAR)** from the detected facial landmarks. These values are often pre-calculated and stored in the CSV files.
+* **`dds.py`:** This script calculates the **Eye Aspect Ratio (EAR)** and **Mouth Aspect Ratio (MAR)** from the detected facial landmarks. These values are often pre-calculated and stored in the CSV files.
 
 ---
 
@@ -181,13 +189,13 @@ The core logic for calculating the geometric features is likely housed in `ddd.p
 
 ### 3.1 Training the Model
 
-1.  **Model Definition:** The `fastvit.ipynb` notebook likely contains the initial model setup and potentially some training/fine-tuning steps. The base model weights (`fastvit_t8.pth.tar`) are likely used for transfer learning.
+1.  **Model Definition:** The base model weights (`fastvit_t8.pth.tar`) are used for transfer learning.
 2.  **Training Script:** Execute the main training script.
     ```bash
     python train_fastvit.py
     ```
     * This script reads data paths and EAR values from the CSV files (`train_annotations.csv`, `val_annotations.csv`) via `dataset.py`.
-    * It fine-tunes the **FastViT** model (referred to as **FastViT-DrowsyNet** in the report) on the DDD.
+    * It fine-tunes the **FastViT** model (referred to as **FastViT-DrowsyNet** ) on the DDD.
     * The best performing model weights will be saved as **`best_loss.pth`**.
 
 ### 3.2 Prediction and Real-Time Use
@@ -196,7 +204,7 @@ The core logic for calculating the geometric features is likely housed in `ddd.p
     ```bash
     python predict.py
     ```
-2.  **Real-Time Deployment:** The file structure suggests that the `dds.py` script is the final **Driver Drowsiness System** (DDS) script. This is likely the real-time script deployed on the Raspberry Pi:
+2.  **Real-Time Deployment:** The  `predict.py` script is the final **Driver Drowsiness System** (DDS) script. This is the real-time script deployed on the Raspberry Pi:
     * It loads the saved weights (`best_loss.pth`).
     * It uses **OpenCV** to capture live video.
     * It uses **dlib** for real-time facial landmark detection.
@@ -215,10 +223,9 @@ The core logic for calculating the geometric features is likely housed in `ddd.p
 | `train_fastvit.py` | Main script for training and validation. | Training |
 | `dataset.py` | Defines the PyTorch Dataset class, handling image loading and annotation parsing. | Data Loader |
 | `train_annotations.csv`, `val_annotations.csv`, etc. | Annotation files mapping images to labels/EAR values. | Data |
-| `ddd.py` | Utility script, likely containing the logic for EAR/MAR calculation. | Feature Engineering |
 | `shape_predictor_68_face_landmarks.dat` | Necessary dlib file for detecting 68 facial landmarks. | dlib Dependency |
 | `predict.py` | Script for testing inference on new images or videos. | Inference |
-| `dds.py` | Final real-time driver drowsiness system script (likely for RPi deployment). | Deployment |
+
 
 ## 📋 Key Technologies and Abbreviations
 
