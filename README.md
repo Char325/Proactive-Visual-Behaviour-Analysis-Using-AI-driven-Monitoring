@@ -91,7 +91,7 @@ The model is built upon the **FastViT** (Fast Hybrid Vision Transformer) archite
 | **Hybrid Structure** | Combines the local feature extraction of Convolutional Neural Networks (CNNs) with the global context modeling of Vision Transformers (ViT). | Higher accuracy than pure CNNs, but much faster than standard ViT models, making it suitable for the Raspberry Pi 4. |
 | **Large Kernel Convolutions** | Integrated into the Feed Forward Network (FFN) layers. | Expands the model's effective receptive field to capture large-scale drowsiness cues (like full yawns) without relying on expensive self-attention across the entire image. |
 
-<img width="786" height="1398" alt="image" src="https://github.com/user-attachments/assets/c2347952-9263-4eec-8dd5-2636c93cf772" />
+<img width="686" height="1098" alt="image" src="https://github.com/user-attachments/assets/c2347952-9263-4eec-8dd5-2636c93cf772" />
 
 Raspberry with PiCam5 Setup
 
